@@ -1,6 +1,8 @@
 var submit = document.getElementById("submit");
 var space = " ";
 var treeStuff ={};
+var enter = document.getElementById("rows");
+var char = document.getElementById("char");
 
 
   function tree(treeStuff) {
@@ -20,9 +22,26 @@ var treeStuff ={};
 };
 
 submit.addEventListener("click" , tree)
-console.log(space)
-//have to set up listener before vaules declared so that they don't get returned null
-//adding this line to do another PR
+
+char.addEventListener("keyup", function(event) {
+	var newRows = enter.value;
+	var newChar = char.value;
+	event.preventDefault();
+    if (newRows.length > 1 || newChar.length > 1) {
+    	alert("ONLY ONE CHARACTER");
+    	    }
+     else if (event.keyCode == 13) {
+        document.getElementById("submit").click();
+    }
+
+    else if(event.keyCode < 48 || event.keyCode > 57 || event.keyCode != 8){
+        alert ("Only CHARACTERS no Letters");
+    }
+    
+
+});
+
+
 
 
 
